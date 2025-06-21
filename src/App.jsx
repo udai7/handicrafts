@@ -28,6 +28,8 @@ import AboutUs from "./pages/about";
 import App2 from "../Admin-Frontend/src/App";
 import Wishlist from "./pages/Wishlist";
 import SellerDashboard from "./pages/SellerDashboard";
+import MyProfile from "./pages/MyProfile";
+import MyOrders from "./pages/MyOrders";
 
 axios.defaults.withCredentials = true;
 
@@ -52,10 +54,13 @@ function AppContent() {
   //   fetchUser();
   // }, []);
 
+  // Helper to check if user is logged in (adjust as needed)
+  const isLoggedIn = !!user;
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <Routes>
-        <Route path="/" element={<Navigate to="/register" replace />} />
+        <Route path="/" element={<Register />} />
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
@@ -71,6 +76,8 @@ function AppContent() {
           <Route path="/artisans/:id" element={<ArtisanProfile />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/my-profile" element={<MyProfile />} />
+          <Route path="/my-orders" element={<MyOrders />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
